@@ -7,14 +7,19 @@ const ReviewDetails = ({navigation}) => {
 
     const navigateBack = () => navigation.goBack();
     const rating = navigation.getParam('rating');
+    let ratingDetails = [];
+    ratingDetails = [...Array(rating)].map((e, i) => <AntDesign name={"star"} color={"green"} size={20}/>);
 
     return (
         <View style={globalStyles.container}>
             <Text>ReviewDetails Screen</Text>
             <Text style={[globalStyles.titleText, styles.header]}>{navigation.getParam('title')} </Text>
             <Text style={styles.headerText}> Rating </Text>
-            <AntDesign name={"star"} color={"green"} size={20}/>
-            <Text>{navigation.getParam('rating')} </Text>
+
+            <View style={{flexDirection:'row'}}>
+                {ratingDetails}
+            </View>
+            <Text>{rating} </Text>
             <Text>{navigation.getParam('body')} </Text>
             <Button onPress={navigateBack} title={"Go To Previous Screen"}/>
         </View>
